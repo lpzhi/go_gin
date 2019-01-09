@@ -3,6 +3,12 @@
 	"ignore": "test",
 	"package": [
 		{
+			"checksumSHA1": "mBJTA0cfAKOgJiZlohqfTBOzh4I=",
+			"path": "github.com/DeanThompson/ginpprof",
+			"revision": "8c0e31bfeaa87bd40412ee8a8ba383f5f700ff72",
+			"revisionTime": "2017-02-18T16:25:46Z"
+		},
+		{
 			"checksumSHA1": "SqzZEyKemFD9EfNUHMCvuKW8ZUs=",
 			"path": "github.com/Unknwon/com",
 			"revision": "41959bdd855fb7db467f78865d5f9044507df1cd",

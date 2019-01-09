@@ -7,11 +7,14 @@ import (
 )
 
 func InitRouter() *gin.Engine  {
-	r :=gin.New()
+
+	r :=gin.Default()
+
+
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
 
-	gin.SetMode(setting.RunMode)
+	gin.SetMode(setting.ServerSetting.RunMode)
 
 	r.GET("/test", func(c *gin.Context) {
 		c.JSON(200,gin.H{
@@ -31,6 +34,7 @@ func InitRouter() *gin.Engine  {
 		//删除指定标签
 		apiv1.DELETE("/tags/:id", v1.DeleteTag)
 	}
+
 
 	return r
 }
