@@ -16,6 +16,8 @@ type App struct {
 	PrefixUrl string
 	RuntimeRootPath string
 }
+
+
 var (
 	Cfg *ini.File
 
@@ -55,7 +57,6 @@ func init() {
 	//LoadServer()
 	//LoadApp()
 }
-
 
 
 func SetUp()  {

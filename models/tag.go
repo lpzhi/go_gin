@@ -9,9 +9,7 @@ type Tag struct {
 }
 
 func GetTags(pageNum int, pageSize int, maps interface {}) (tags []Tag)  {
-
 	db.Where(maps).Order("id desc").Offset(pageNum).Limit(pageSize).Find(&tags)
-
 	return
 }
 

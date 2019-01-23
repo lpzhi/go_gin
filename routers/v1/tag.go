@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"gin/models"
 	"gin/pkg/e"
+	"gin/pkg/export"
 	"gin/pkg/setting"
 	"gin/pkg/util"
 	"github.com/Unknwon/com"
@@ -33,6 +34,7 @@ func GetTags(c *gin.Context) {
 	data["lists"] = models.GetTags(util.GetPage(c),setting.AppSetting.PageSize,maps)
 	data["total"] = models.GetTagTotal(maps)
 
+	fmt.Println(c.Get("PF"))
 	c.JSON(http.StatusOK,gin.H{
 		"code":code,
 		"msg":e.GetMsg(code),
@@ -50,4 +52,30 @@ func EditTag(c *gin.Context) {
 
 //删除文章标签
 func DeleteTag(c *gin.Context) {
+}
+
+func ExportTag(c *gin.Context)  {
+
+	maps := make(map[string]interface{})
+	maps["state"] = 1
+	data := models.GetTags(util.GetPage(c),setting.AppSetting.PageSize,maps)
+
+
+	var exportData [][]string
+	for _,v := range data {
+		var tmp []string
+		tmp = append(tmp,v.Name,com.Int2HexStr(v.State))
+		exportData = append(exportData,tmp)
+	}
+
+	filePath,err := export.ExportCsv("lupeng",exportData)
+
+	if err !=nil {
+		panic(err)
+	}
+	c.JSON(http.StatusOK,gin.H{
+		"code":e.SUCCESS,
+		"msg":"aa",
+		"filePath":filePath,
+	})
 }

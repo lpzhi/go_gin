@@ -4,13 +4,12 @@ import (
 	"fmt"
 	"gin/pkg/setting"
 	"gin/routers"
-	"github.com/DeanThompson/ginpprof"
 	"net/http"
 )
 
 func main() {
 	router := routers.InitRouter()
-	ginpprof.Wrap(router)
+	//ginpprof.Wrap(router)
 	//router.Run(":8000")
 	s := &http.Server{
 		Addr:           fmt.Sprintf(":%d", setting.ServerSetting.HttpPort),
